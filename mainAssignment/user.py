@@ -26,37 +26,37 @@ class User:
             val = self.sh1.cell(i, 1).value
             print(i, f".{val}")
 
-    def movieDetails(self,opt):
+    def movieDetails(self, opt):
         row = opt
         c = self.sh1.max_column
         mov_dic = {}
-        for col in range(1,c+1):
+        for col in range(1, c+1):
 
             # add to dictionary
             attr = self.sh1.cell(1, col).value
-            mov_dic[attr]=self.sh1.cell(row, col).value
+            mov_dic[attr] = self.sh1.cell(row, col).value
 
-            if col == 1 or col ==2 or col == 3 or col == 4 or col == 5 or col == 6:
-                print(f"{attr}:",self.sh1.cell(row, col).value)
+            if col == 1 or col == 2 or col == 3 or col == 4 or col == 5 or col == 6:
+                print(f"{attr}:", self.sh1.cell(row, col).value)
             if col == 12:
                 print(f"{attr}:", self.sh1.cell(row, col).value)
             if col == c+1:
-                print(f"{attr}:",self.sh1.cell(row, col).value)
+                print(f"{attr}:", self.sh1.cell(row, col).value)
 
         return mov_dic
 
-    def updateCap(self,val,opt):
+    def updateCap(self, val, opt):
         row = opt
         c = self.sh1.max_column
-        for col in range(1,c+1):
+        for col in range(1, c+1):
             if col == 13:
-                self.sh1.cell(row, col).value =val
+                self.sh1.cell(row, col).value = val
                 self.wb.save(self.path)
                 break
 
         print("up val:", self.sh1.cell(row, 13).value)
 
-    def cancelTic(self,cancel_tic,opt):
+    def cancelTic(self, cancel_tic, opt):
         row = opt
         c = self.sh1.max_column
         seats = self.sh1.cell(row, 13).value
@@ -68,11 +68,11 @@ class User:
                 break
         print("up val:", self.sh1.cell(row, 13).value)
 
-    def addUserRating(self,user_rating,opt):
+    def addUserRating(self, user_rating, opt):
         c = self.sh1.max_column
         self.sh1.cell(1, c+1).value = "User Rating"
         row = opt
-        self.sh1.cell(row,c+1).value = user_rating
+        self.sh1.cell(row, c+1).value = user_rating
         self.wb.save(self.path)
 
 
@@ -90,11 +90,11 @@ def userAction(user1):
             print(f"******Welcome {user1} *******")
             timings = details['Timings']
             lst = timings.split(',')
-            dic_ti ={}
+            dic_ti = {}
             print("movie timings : ")
             for i in range(len(lst)):
                 print(i+1, ".", lst[i])
-                dic_ti[i+1]=lst[i]
+                dic_ti[i+1] = lst[i]
 
             # select timing
             sel = int(input("select timing: "))
@@ -110,20 +110,20 @@ def userAction(user1):
                 print(e.data)
 
             upt_seats = int(seats)-int(sel_seats)
-            user.updateCap(upt_seats,opt1)
+            user.updateCap(upt_seats, opt1)
         elif opt == 2:
             print(f"******Welcome {user1} *******")
             cancel_tic = int(input("enter number of seats to be canceled: "))
-            user.cancelTic(cancel_tic,opt1)
+            user.cancelTic(cancel_tic, opt1)
         elif opt == 3:
             print(f"******Welcome {user1} *******")
             user_rating = input(f"{user1} give rating for movie: ")
-            user.addUserRating(user_rating,opt1)
+            user.addUserRating(user_rating, opt1)
         else:
             break
 
 
-def userlogin(username,password):
+def userlogin(username, password):
     path = "\\Users\\amanikanth\\PycharmProjects\\pytest\\mainAssignment\\resources\\movieDetails.xlsx"
     wb = openpyxl.load_workbook(path)
     sh2 = wb['Sheet2']
