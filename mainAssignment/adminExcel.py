@@ -23,7 +23,7 @@ class Excel:
         for i in range(2, r+1):
             val = self.sh1.cell(i, 1).value
             print(i, f".{val}")
-        edit_movie = input("enter the movie to be edited:")
+        edit_movie = input("enter the movie name to be edited:")
 
         # editing movie details
         for i in range(1,r+1):
@@ -42,7 +42,7 @@ class Excel:
         for i in range(2, r):
             val = self.sh1.cell(i, 1).value
             print(i, f".{val}")
-        del_movie = input("enter the movie to be deleted:")
+        del_movie = input("enter the movie name to be deleted:")
 
         # deleting movie details
         for i in range(1, r + 1):

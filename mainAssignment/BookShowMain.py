@@ -1,11 +1,10 @@
-# from adminClass import adminAction
-# from register import userRegister
-# from user import userlogin
+from adminActions import adminAction
+from userRegister import user_register
+from user import userlogin
 
 
-class Welcome:
-    def welcome(self):
-        print("******Welcome to BookMyShow*******\n1.Login\n2.Register\n3.Exit")
+def welcome():
+    print("******Welcome to BookMyShow*******\n1.Login\n2.Register\n3.Exit")
 
 
 def option():
@@ -17,10 +16,8 @@ def main():
     admin_dic = {
         'pass': 'admin123'
     }
-    # created obj of welcome class
-    wel = Welcome()
     while True:
-        wel.welcome()
+        welcome()
         opt = option()
 
         if opt == 1:
@@ -36,8 +33,9 @@ def main():
 
         elif opt == 2:
             print("****Create new Account***** ")
-            userRegister()
+            user_register()
         else:
+            print("Thank you!")
             break
 
 

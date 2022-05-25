@@ -1,4 +1,3 @@
-import openpyxl
 
 from adminExcel import Excel
 import calculateTimings
@@ -41,11 +40,11 @@ def adminAction():
             info_new_movie.append(director)
             admin_rating = input("enter admin rating: ")
             info_new_movie.append(admin_rating)
-            language = input("enter language")
+            language = input("enter language: ")
             info_new_movie.append(language)
             interval_time = input("enter interval-time should be in number :")
             info_new_movie.append(interval_time)
-            shows = input("enter no of shows")
+            shows = input("enter no of shows: ")
             info_new_movie.append(shows)
             first_show = input("enter first show timing in hr:min:sec format: ")
             info_new_movie.append(first_show)
